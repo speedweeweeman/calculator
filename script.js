@@ -1,3 +1,8 @@
+// Functions for filling the calculator
+function fillCalc() {
+    const inputBody = document.querySelector(".inputPanel");
+}
+
 function add(a, b) {
     return a + b;
 }
@@ -15,22 +20,26 @@ function divide(a, b) {
 }
 
 // decides whether it was a number/equal sign, operator or clear that's been clicked
-function whenClicked(event) {
-    event.target
+function whenClicked(e) {
+    const clickedItem = e.target.value;
+
+    if (clickedItem.classList.contains('=') {
+
+    }
 }
 
 // if it was a number, store var and eval if needed. If it was equals sign, eval and run clear
-function numberClicked(event) {
+function numberClicked(e) {
 
 }
 
 // if it was an operator, store operator
-function operatorClicked(event) {
+function operatorClicked(e) {
 
 }
 
 // if it was clear, clear everything
-function clearClicked(event) {
+function clearClicked(e) {
 
 }
 
