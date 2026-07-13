@@ -16,19 +16,26 @@ function addEventsandParse() {
 // if it was a number, store var and eval if needed
 function numberClicked(e) {
     const typedPanel = document.querySelector('.typedPanel');
-
     if (!operator) {
         var1 = var1 + e.target.textContent;
         typedPanel.textContent = var1;
     } else if (operator && var1) {
         var2 = var2 + e.target.textContent;
-        typedPanel.textContent = typedPanel.textContent + var2;
+        typedPanel.textContent = storedString1 + var2;
     }
 }
 
 // if it was an operator, store operator or clear bin
 function operatorClicked(e) {
-    console.log("operatorClicked " + e.target);
+    const typedPanel = document.querySelector('.typedPanel');
+
+    if (var1 && !operator && !e.target.classList.contains('=')) {
+        operator = e.target.textContent;
+        typedPanel.textContent = typedPanel.textContent + ' ' + operator + ' ';
+        storedString1 = typedPanel.textContent;
+    } else if (var2) {
+
+    }
 }
 
 // if it was clear, clear everything
@@ -39,5 +46,6 @@ function clearClicked(e) {
 let var1 = '';
 let var2 = '';
 let operator = '';
+let storedString1 = '';
 
 addEventsandParse();
