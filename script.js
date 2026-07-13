@@ -1,4 +1,3 @@
-// decides whether it was a number/equal sign, operator or clear that's been clicked
 function addEventsandParse() {
     const inputPanel = document.querySelector(".inputPanel");
 
@@ -13,7 +12,6 @@ function addEventsandParse() {
     });
 }
 
-// if it was a number, store var and eval if needed
 function numberClicked(e) {
     const typedPanel = document.querySelector('.typedPanel');
     if (!operator) {
@@ -25,7 +23,6 @@ function numberClicked(e) {
     }
 }
 
-// if it was an operator, store operator or clear bin
 function operatorClicked(e) {
     const typedPanel = document.querySelector('.typedPanel');
 
@@ -33,14 +30,42 @@ function operatorClicked(e) {
         operator = e.target.textContent;
         typedPanel.textContent = typedPanel.textContent + ' ' + operator + ' ';
         storedString1 = typedPanel.textContent;
+    } else if (var2 && !e.target.classList.contains('=')) {
+        operate();
+        operator = e.target.textContent;
+        typedPanel.textContent = typedPanel.textContent + ' ' + operator + ' ';
+        storedString1 = typedPanel.textContent;
     } else if (var2) {
-
+        operate();
     }
 }
 
-// if it was clear, clear everything
 function clearClicked(e) {
-    console.log("clearClicked " + e.target);
+    const typedPanel = document.querySelector('.typedPanel');
+    typedPanel.textContent = '';
+    var1 = '';
+    var2 = '';
+    operator = '';
+    storedString1 = '';
+}
+
+function operate() {
+    if (operator === '+') {
+        var1 = parseInt(var1) + parseInt(var2);
+    } else if (operator === '-') {
+        var1 = parseInt(var1) - parseInt(var2);
+    } else if (operator === 'x') {
+        var1 = parseInt(var1) * parseInt(var2);
+    } else if (operator === '/') {
+        var1 = parseInt(var1) / parseInt(var2);
+    }
+
+    var2 = '';
+    operator = '';
+    storedString1 = '';
+    
+    const typedPanel = document.querySelector('.typedPanel');
+    typedPanel.textContent = var1;
 }
 
 let var1 = '';
