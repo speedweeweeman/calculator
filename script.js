@@ -1,8 +1,3 @@
-// Functions for filling the calculator
-function fillCalc() {
-    const inputBody = document.querySelector(".inputPanel");
-}
-
 function add(a, b) {
     return a + b;
 }
